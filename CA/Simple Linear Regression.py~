@@ -1,0 +1,36 @@
+import numpy
+
+class LinearRegression(object):
+    def __init__(self):
+        self.data = []        
+        while 1:
+            try:
+                self.data.append(raw_input())
+            except:
+                break
+
+    def beta(self, x, y):
+        n = len(x)
+        z = []
+        px = []
+        for i in range(len(x)):
+            z.append(x[i]*y[i])
+            px.append(x[i]**2)
+        num = float(sum(z) - sum(x)*sum(y)/n)
+        den = float(sum(px) - sum(x)**2/n)              
+        b = num/den
+        a = numpy.mean(y) - b*numpy.mean(x)
+        res = [b, a]
+        return res 
+                   
+    def solve(self):
+        vals = [[int(x) for x in y.split()[1:]] for y in self.data[1:]]   
+        x = [x[0] for x in vals] 
+        y = [y[1] for y in vals]
+        res = self.beta(x,y)
+        return ' '.join(map(str,res))
+     
+
+print LinearRegression().solve() 
+
+

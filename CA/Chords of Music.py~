@@ -1,0 +1,62 @@
+class Chords(object):
+    def __init__(self):
+        self.data = []        
+        while 1:
+            try:
+                self.data.append(raw_input())
+            except:
+                break
+        
+    @classmethod
+    def root(self, arr):
+        root1 = 5
+        root2 = 7
+        for i in range(len(arr)):
+            for j in range(1,len(arr)):           
+                if (arr[0] - arr[j]) == root1:
+                    return arr[0]
+                elif (arr[0] - arr[j]) == root2:
+                    return arr[j]                
+            arr.append(arr[0])
+            arr.pop(0)    
+        return 'other'
+    @classmethod
+    def naming(self, arr, label):
+        data = {
+            0:'C',  
+            1:'C#',
+            2:'D',
+            3:'D#',  
+            4:'E',
+            5:'F',  
+            6:'F#',  
+            7:'G',
+            8:'G#',
+            9:'A',
+            10:'A#',
+            11:'B',
+             }
+        major = [4,8]
+        minor = [3,9]
+        if label == 'other':
+            return label
+        else:
+            for i in range(len(arr)):
+                for j in range(1,len(arr)):
+                    if (label - arr[j]) in minor:
+                        return data[label] + '-minor'
+            return data[label] + '-major'
+            
+    def solve(self):
+        res = []
+        vals = [[int(x) for x in y.split()] for y in self.data[1:]] 
+        for i in vals:
+            for j in range(len(i)):
+                i[j] = i[j]%12
+            res.append(self.naming(i,self.root(i)))               
+        return ' '.join(res)
+     
+
+print Chords().solve() 
+
+

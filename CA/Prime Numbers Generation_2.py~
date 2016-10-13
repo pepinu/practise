@@ -1,0 +1,35 @@
+from math import sqrt
+result = []
+prime = []
+positive = []
+N = 3000000
+loops = int(raw_input())
+primes = raw_input().split(" ")
+primes = map(int, primes)
+
+for i in range(N):
+  positive.append(True)
+i = 2
+
+sieve = range(1, N)
+positive[0] = False
+positive[1] = False
+
+while i*i <= N:
+  if positive[i] == True:
+    j = i*i
+    while j < N:
+      positive[j] = False
+      j += i    
+  i += 1
+
+for i in range(len(positive)):
+  if positive[i] == True:
+    prime.append(i)
+
+
+for i in primes:
+  result.append(prime[i])
+
+print ' '.join(map(str, result))
+

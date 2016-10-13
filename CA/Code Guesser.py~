@@ -1,0 +1,40 @@
+result = [None,None,None]
+loops = input()
+guesso = []
+guessf = []
+for i in range(loops):
+  nums = raw_input().split()
+  nums = map(int, nums)
+  if nums[1] == 2:
+    guesso.append(nums[1])
+  if nums[1] == 1:
+    guessf.append(nums[1])
+  
+for i in guessf:
+  if None not in result:
+    break
+  for j in guessf:
+    if i[0] == j[0] and i[1] != j[1] and i[2] != j[2]:
+      result[0] = i[0]
+    if i[1] == j[1] and i[0] != j[0] and i[2] != j[2]:
+      result[1] = i[1]
+    if i[2] == j[2] and i[1] != j[1] and i[0] != j[0]:
+      result[2] = i[2]
+
+for i in guesso:
+  if None not in result:
+    break
+  for j in guesso:
+    if i[0] == j[0] and i[1] == j[1]:
+      result[0] = i[0]
+      result[1] = i[1]
+    if i[2] == j[2] and i[1] == j[1]:
+      result[2] = i[2]
+      result[1] = i[1]
+    if i[0] == j[0] and i[2] == j[2]:
+      result[0] = i[0]
+      result[2] = i[2]
+
+print " ".join(map(str, result))
+        
+

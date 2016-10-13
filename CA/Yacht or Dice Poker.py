@@ -1,0 +1,35 @@
+result = []
+ss = [1,1,1,1,1,0]
+bs= [0,1,1,1,1,1]
+
+x = input()
+for r in range(x):
+  dice = [0,0,0,0,0,0]
+  tosses = raw_input().split()
+  tosses = map(int, tosses)
+  for toss in tosses:
+    dice[toss-1] += 1
+  if dice == ss:
+    result.append('small-straight')
+  elif dice == bs:
+    result.append('big-straight')
+  elif 5 in dice:
+    result.append('yacht')
+  elif 4 in dice:
+    result.append('four')
+  elif 3 in dice and 2 in dice:
+    result.append('full-house')
+  elif 3 in dice:
+    result.append('three')
+  elif 2 in dice:
+    dice = sorted(dice)
+    dice = dice[::-1]
+    if dice[0] == dice[1]:
+      result.append("two-pairs")
+    else:
+      result.append("pair")
+  else:
+    result.append('none')
+
+
+print ' '.join(map(str,result))

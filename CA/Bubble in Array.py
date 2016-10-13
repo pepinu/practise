@@ -1,0 +1,25 @@
+result = []
+nums = raw_input().split()
+nums = map(int, nums)
+if -1 in nums: 
+  nums.pop()
+swap = 0
+for i in range(len(nums)):
+  try:
+    j = i+1
+    if nums[i] > nums[j]:
+      t = nums[j]
+      nums[j] = nums[i]
+      nums[i] = t
+      swap += 1
+  except IndexError:
+    result.append(swap)
+    break         
+_sum = 0
+for a in nums:
+    _sum += int(a) 
+    _sum *= 113
+_sum %= 10000007
+result.append(_sum) 
+print ' '.join(map(str,result))
+

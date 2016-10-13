@@ -1,0 +1,27 @@
+def mortgage(P, R, L):
+  x = P
+  M = round(P/L)
+  while P != 0:
+    for i in range(L):
+      P = P + (P*(R/12)) - M 
+    if P < 50:
+      return M
+    elif P < 0:
+      M -= 1
+    elif P > 0:
+      M += 1
+    P = x
+
+result = []
+terms = raw_input().split()
+terms = map(int, terms)
+P = terms[0]
+R = terms[1] * 0.01
+L = terms[2]
+print mortgage(P, R, L)
+ 
+
+
+
+
+

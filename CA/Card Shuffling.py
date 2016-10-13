@@ -1,0 +1,23 @@
+suits = ['C', 'D', 'H', 'S']
+ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K']
+rand = []
+result = []
+cards = raw_input().split()
+cards = map(int, cards)
+
+for i in range(len(cards)):
+    rand.append(cards[i] % 52)
+    suit_value = i / 13
+    rank_value = i % 13
+    cards[i] = suits[suit_value] + ranks[rank_value]
+
+for i in range(52):
+    j = rand[i]
+    t = cards[i]
+    cards[i] = cards[j]
+    cards[j] = t
+
+
+print ' '.join(map(str, cards))
+
+

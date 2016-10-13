@@ -1,0 +1,13 @@
+result = []
+sum = int(raw_input())
+nums = raw_input().split()
+while nums[0] != '%':
+    if nums[0] == '+':
+        sum += nums[2]
+    elif nums[0] == '*':
+        sum *= nums[2]
+    nums = raw_input().split()
+sum %= nums[1]
+result.append(sum)      
+print " ".join(map(str, result))
+

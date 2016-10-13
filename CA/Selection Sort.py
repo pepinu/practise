@@ -1,0 +1,18 @@
+result = []
+loops = int(raw_input())
+nums = raw_input().split()
+nums = map(int, nums)
+x = len(nums)
+while x > 1:
+  _max = 0
+  for i in range(x):
+    if nums[i] > _max:
+      _max = nums[i]
+      ind = i
+  t = nums[x-1]
+  nums[ind] = nums[x-1]
+  nums[x-1] = _max     
+  result.append(ind)
+  x -= 1
+print " ".join(map(str, result))
+

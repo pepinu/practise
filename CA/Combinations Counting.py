@@ -1,0 +1,11 @@
+from math import factorial as silnia
+result = []
+loops = int(raw_input())
+for i in range(loops):
+  nk = raw_input().split()
+  nk = map(int, nk)
+  res = silnia(nk[0]) / (silnia(nk[1]) * (silnia(nk[0] - nk[1])))
+  result.append(res)
+print ' '.join(map(str, result))
+
+
